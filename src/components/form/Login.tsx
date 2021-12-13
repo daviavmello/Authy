@@ -9,14 +9,26 @@ export const Login: React.FC = () => {
 
   useEffect(() => {
     const emailFormat = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    if (emailFormat.test(email)) {
-      setIsDisabled(false);
-      console.log(email);
-    } else {
-      setIsDisabled(true);
-      console.log(`wrong format ${email}`);
+    switch (emailFormat.test(email)) {
+      case true:
+        setIsDisabled(false);
+        console.log(email);
+        break;
+      case false:
+        setIsDisabled(true);
+        console.log(`wrong format ${email}`);
     }
-  }, [email]);
+
+    switch (password.length <= 2) {
+      case true:
+        setIsDisabled(true);
+        console.log(`wrong password ${password}`);
+        break;
+      case false:
+        setIsDisabled(false);
+        console.log(`password ${password} is adequate`);
+    }
+  }, [email, password]);
 
   return (
     <FormWrapper>
