@@ -67,8 +67,9 @@ button {
   text-transform: uppercase;
   font-family: "Consolas", "Courier", monospace;
   font-size: 0.75rem;
-  cursor: pointer;
-  &:hover {
+  cursor: not-allowed;
+  &:hover:enabled {
+    cursor: pointer;
     outline: none;
     border: 1px solid ${({ theme }) => theme.tertiary};
     color: ${({ theme }) => theme.tertiary};

@@ -10,8 +10,10 @@ export const Login: React.FC = () => {
   useEffect(() => {
     const emailFormat = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
     if (emailFormat.test(email)) {
+      setIsDisabled(false);
       console.log(email);
     } else {
+      setIsDisabled(true);
       console.log(`wrong format ${email}`);
     }
   }, [email]);
@@ -30,7 +32,7 @@ export const Login: React.FC = () => {
       />
       <SubmitButton disabled={isDisabled}>
         submit&nbsp;
-        <LogintIcon />
+        <LoginIcon />
       </SubmitButton>
     </FormWrapper>
   );
@@ -56,13 +58,15 @@ const FormWrapper = styled.form`
 `;
 
 const Input = styled.input``;
+
 const SubmitButton = styled.button`
   display: flex;
   align-items: center;
   width: fit-content;
   padding: 0.25rem 1rem;
 `;
-const LogintIcon = styled(LogIn)`
+
+const LoginIcon = styled(LogIn)`
   width: 1rem;
 `;
 
@@ -70,4 +74,3 @@ const ValidationText = styled.h4`
   font-family: "Consolas", "Courier", monospace;
   color: ${({ theme }) => theme.tertiary};
 `;
-
